@@ -21,8 +21,3 @@ and status changes.
 ## Notes
 - Data is stored in memory and resets when the server restarts.
 - Replace the mock store with a database when you want persistence.
-
-## Roadmap
-- Add authentication and role-based access control
-- Persist incidents and notes to a database
-- Add filters, search, and saved views
