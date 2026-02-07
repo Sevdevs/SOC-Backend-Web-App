@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Incident Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="list">
+    <div class="app">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SOC workspace</p>
+          <h1>Incident Tracker</h1>
+          <p class="lede">
+            Track investigations, document indicators, and maintain clean audit
+            trails for each case.
+          </p>
+        </div>
+        <div class="topbar-actions">
+          <span class="chip">Environment: Lab</span>
+          <a class="ghost" href="detail.html?id=INC-1001">Open sample</a>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Incident queue</h2>
+            <span class="muted" id="incident-count">0 incidents</span>
+          </div>
+          <div class="filters">
+            <label>
+              Search
+              <input id="filter-search" type="text" placeholder="Title, owner, tag, IOC" />
+            </label>
+            <label>
+              Severity
+              <select id="filter-severity">
+                <option value="">All</option>
+                <option>Critical</option>
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+              </select>
+            </label>
+            <label>
+              Status
+              <select id="filter-status">
+                <option value="">All</option>
+                <option>New</option>
+                <option>Investigating</option>
+                <option>Contained</option>
+                <option>Resolved</option>
+              </select>
+            </label>
+            <button class="ghost" type="button" id="filter-clear">Clear</button>
+          </div>
+          <div class="table">
+            <div class="table-row table-header">
+              <span>ID</span>
+              <span>Title</span>
+              <span>Severity</span>
+              <span>Status</span>
+              <span>Owner</span>
+              <span>Updated</span>
+              <span>Tags</span>
+            </div>
+            <div id="incident-table"></div>
+            <div class="empty" id="incident-empty">No incidents yet.</div>
+          </div>
+        </section>
+
+        <aside class="panel panel-form">
+          <div class="panel-header">
+            <h2>New incident</h2>
+            <span class="muted">Create a case to practice triage.</span>
+          </div>
+          <form id="create-form" class="form">
+            <label>
+              Title
+              <input type="text" name="title" placeholder="Suspicious mailbox rule" required />
+            </label>
+            <label>
+              Severity
+              <select name="severity">
+                <option>Critical</option>
+                <option>High</option>
+                <option selected>Medium</option>
+                <option>Low</option>
+              </select>
+            </label>
+            <label>
+              Status
+              <select name="status">
+                <option selected>New</option>
+                <option>Investigating</option>
+                <option>Contained</option>
+                <option>Resolved</option>
+              </select>
+            </label>
+            <label>
+              Owner
+              <input type="text" name="owner" placeholder="SOC Tier 1" />
+            </label>
+            <label>
+              Tags (comma-separated)
+              <input type="text" name="tags" placeholder="email, identity" />
+            </label>
+            <label>
+              IOCs (comma-separated)
+              <input type="text" name="iocs" placeholder="example.com, 10.0.2.12" />
+            </label>
+            <button class="primary" type="submit">Create incident</button>
+            <div class="form-error" id="form-error" role="alert"></div>
+          </form>
+        </aside>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

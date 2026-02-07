@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Incident Detail</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="detail">
+    <div class="app">
+      <header class="topbar">
+        <div>
+          <a class="back" href="index.html">Back to queue</a>
+          <h1 id="detail-title">Incident</h1>
+          <p class="lede" id="detail-subtitle"></p>
+        </div>
+        <div class="topbar-actions">
+          <span class="chip" id="detail-id">INC-0000</span>
+          <span class="chip" id="detail-updated">Updated just now</span>
+        </div>
+      </header>
+
+      <main class="layout detail-layout">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Incident summary</h2>
+          </div>
+          <div class="summary-grid">
+            <div>
+              <p class="label">Severity</p>
+              <select id="detail-severity" class="select compact">
+                <option>Critical</option>
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+              </select>
+            </div>
+            <div>
+              <p class="label">Status</p>
+              <select id="detail-status" class="select compact">
+                <option>New</option>
+                <option>Investigating</option>
+                <option>Contained</option>
+                <option>Resolved</option>
+              </select>
+            </div>
+            <div>
+              <p class="label">Owner</p>
+              <input id="detail-owner" class="input compact" />
+            </div>
+          </div>
+
+          <div class="meta">
+            <div>
+              <p class="label">Indicators</p>
+              <div id="detail-iocs" class="chip-row"></div>
+            </div>
+            <div>
+              <p class="label">Tags</p>
+              <div id="detail-tags" class="chip-row"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Notes & timeline</h2>
+            <span class="muted">Document decisions and evidence.</span>
+          </div>
+          <form id="note-form" class="form horizontal">
+            <input type="text" name="author" placeholder="Analyst" />
+            <input type="text" name="body" placeholder="Add investigation note" required />
+            <button class="ghost" type="submit">Add note</button>
+          </form>
+          <div id="note-list" class="note-list"></div>
+          <div class="empty" id="note-empty">No notes yet.</div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
